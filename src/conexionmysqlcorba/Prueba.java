@@ -2,7 +2,7 @@ package conexionmysqlcorba;
 
 /**
  *
- * @author USUARIO
+ * @author Alexa
  */
 public class Prueba {
     public static void main(String[] args) {
