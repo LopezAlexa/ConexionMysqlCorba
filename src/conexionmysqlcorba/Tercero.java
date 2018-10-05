@@ -1,6 +1,7 @@
 package conexionmysqlcorba;
 import Terceros.*;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,6 +60,28 @@ public class Tercero extends TerceroPOA{
     @Override
     public void shutdown() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public ResultSet cargarTercero(){
+        
+       ResultSet resultado = null;
+       
+        try {
+            String sqlConsultar = "Select nombres, apellidos, telefono from terceros";
+            objConect.conectar();
+            Statement st = objConect.conex.createStatement();
+            resultado = st.executeQuery(sqlConsultar);
+           
+            //Cerrar las conexiones.
+           // rs.close();
+            objConect.conex.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error " + e.getMessage());
+        }
+       return resultado;
+        
+        
     }
     
     
